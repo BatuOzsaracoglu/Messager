@@ -13,13 +13,16 @@ import javax.swing.*;
 	
 public class FrontEnd extends JApplet implements ActionListener {
 
+	private BackEnd z = new BackEnd();
 	private JTextField Name = new JTextField("Name");
 	private JTextArea Msg = new JTextArea();
 	public JButton S=new JButton("Send");
 	public JButton G=new JButton("Get Messages");
+	public JButton U=new JButton("Get Users");
 	public JButton PICK=new JButton("OFF");
 	public JPanel p = new JPanel();
 	public String A[] = new String[10];
+	public String pick = "";
 	public JComboBox List = new JComboBox(A);
 	public static final Font font = new Font("Castellan", Font.BOLD, 25);
 	public static final Font font1 = new Font("Calibri", Font.CENTER_BASELINE,
@@ -96,6 +99,10 @@ public class FrontEnd extends JApplet implements ActionListener {
 		G.setActionCommand("Get");
 		pSubc.add(G);
 		
+		U.addActionListener(this);
+		U.setActionCommand("GetU");
+		pSubc.add(U);
+		
 		S.addActionListener(this);
 		S.setActionCommand("Send");
 		pSubc.add(S);
@@ -143,12 +150,12 @@ public class FrontEnd extends JApplet implements ActionListener {
 			else{
 				
 			}
-			/*ArrayList<String> Messages = new ArrayList <String>(this.getMessages(Name.getText()));
+			ArrayList<String> Messages = new ArrayList <String>(z.getMessages(Name.getText()));
 			 String s = "";
 			 for (int i = 0; i< Messages.size(); i++)
 			 {s+=Messages.get(i)+"/n";}
 			 Msg.setText(s);
-			 JScrollPane B = new JScrollPane(Msg);*/
+			 JScrollPane B = new JScrollPane(Msg);
 		}
 		
 		if (cmd.equals("Send")) {
@@ -163,17 +170,23 @@ public class FrontEnd extends JApplet implements ActionListener {
 			else{
 				
 			}
-			/*this.addMessage(a,Msg.getText());*/
+			z.addMessage(a,Msg.getText());
 		}
 		if (cmd.equals("List")) {
 
 			
-			/*ArrayList<String> Messages = new ArrayList <String>(this.getUsers());
-			 *  for (int i = 0; i< Messages.size(); i++)
+			pick = "zzz";
+			
+		}
+		
+		if (cmd.equals("GetU")) {
+			
+			ArrayList<String> Messages = new ArrayList <String>(z.getUsers());
+			 String s = "";
+			 for (int i = 0; i< Messages.size(); i++)
 			 {s+=Messages.get(i)+"/n";}
 			 Msg.setText(s);
-			 JScrollPane B = new JScrollPane(Msg);*/
-			
+			 JScrollPane B = new JScrollPane(Msg);
 		}
 		
 		if (cmd.equals("PICK")) {
@@ -206,6 +219,7 @@ public class FrontEnd extends JApplet implements ActionListener {
 		f.setSize(dim.width/2,dim.height);
 		f.setBackground(new Color (200,200,200));
 		FrontEnd t = new FrontEnd();
+		
 		t.init();
 		f.setContentPane(t);
 

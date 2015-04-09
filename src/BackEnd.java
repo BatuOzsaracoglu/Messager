@@ -1,23 +1,38 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class BackEnd {
 	
-	public List<String> getMessage(String username){
-		List<String> messages = new ArrayList<String>();
-		messages.add("Hello");
-		return messages;
+	private HashMap<String, List<String>> users;
+	
+	public BackEnd(){
+		users = new HashMap<String,List<String>>();
+	}
+	
+	public List<String> getMessages(String username){
+		return users.get(username);
 	}
 	
 	public void addMessage(String username, String msg){
-		
+		if(users.containsKey(username)){
+			users.get(username).add(msg);
+		}else{
+			List<String> mess = new ArrayList<String>();
+			mess.add(msg);
+			users.put(username, mess);
+		}
 	}
 	
 	public List<String> getUsers(){
-		List<String> users = new ArrayList<String>();
-		users.add("Bob");
-		return users;
+		List<String> names = new ArrayList<String>();
+		
+		for(String s: users.keySet()){
+			names.add(s);
+		}
+
+		return names;
 	}
 	
 }

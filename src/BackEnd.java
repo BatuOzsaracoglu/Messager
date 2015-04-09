@@ -23,6 +23,8 @@ public class BackEnd {
 			mess.add(msg);
 			users.put(username, mess);
 		}
+		Encoder encoder = new Encoder("Data.txt");
+		encoder.write(username + "," + msg);
 	}
 	
 	public List<String> getUsers(){

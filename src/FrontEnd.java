@@ -6,8 +6,9 @@ import java.awt.Font;
 import java.awt.Toolkit;
 //import java.awt.Dimension;
 	import java.awt.event.*;
-	
-	import javax.swing.*;
+import java.util.ArrayList;
+
+import javax.swing.*;
 	
 	
 public class FrontEnd extends JApplet implements ActionListener {
@@ -133,19 +134,46 @@ public class FrontEnd extends JApplet implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		String cmd = arg0.getActionCommand();
 		if (cmd.equals("Get")) {
-
-			/////////////////////////
+			String a = "";
+			if(Name.getText()!=null)
+			{
+				a = Name.getText();
+			}
+			
+			else{
+				
+			}
+			/*ArrayList<String> Messages = new ArrayList <String>(this.getMessages(Name.getText()));
+			 String s = "";
+			 for (int i = 0; i< Messages.size(); i++)
+			 {s+=Messages.get(i)+"/n";}
+			 Msg.setText(s);
+			 JScrollPane B = new JScrollPane(Msg);*/
 		}
 		
 		if (cmd.equals("Send")) {
 
 		
-			////////////////////////
+			String a = "";
+			if(Name.getText()!=null)
+			{
+				a = Name.getText();
+			}
+			
+			else{
+				
+			}
+			/*this.addMessage(a,Msg.getText());*/
 		}
 		if (cmd.equals("List")) {
 
 			
-			////////////////////////
+			/*ArrayList<String> Messages = new ArrayList <String>(this.getUsers());
+			 *  for (int i = 0; i< Messages.size(); i++)
+			 {s+=Messages.get(i)+"/n";}
+			 Msg.setText(s);
+			 JScrollPane B = new JScrollPane(Msg);*/
+			
 		}
 		
 		if (cmd.equals("PICK")) {
